@@ -20,7 +20,7 @@ public class MusicPlayer {
 //        this.music = music;
 //    }
 
-    public void play(){
-        System.out.println("Playnig: " + music.getSong());
+    public String play(){
+        return "Playnig: " + music.getSong();
     }
 }
