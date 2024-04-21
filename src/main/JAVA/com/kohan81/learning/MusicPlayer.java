@@ -1,11 +1,13 @@
 package com.kohan81.learning;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MusicPlayer {
 
+    @Qualifier("classicalMusic")// решение проблемы выбора стиля музыки
     @Autowired//третий способ внедрения зависимости, в таком случае ни конструктор, ни метод, ничего не нужно
     private Music music;
 
