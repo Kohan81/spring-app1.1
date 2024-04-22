@@ -14,7 +14,9 @@ public class Computer {
         this.musicPlayer = musicPlayer;
     }
 
+    Boolean isMixed = false;
+
     public String toString(){
-        return "Computer " + id + " " + musicPlayer.play();
+        return "Computer " + id + " " + musicPlayer.play(Genre.ROCK);
     }
 }

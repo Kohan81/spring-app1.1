@@ -4,25 +4,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import java.util.Random;
+
 @Component
 public class MusicPlayer {
 
-    @Qualifier("classicalMusic")// решение проблемы выбора стиля музыки
-    @Autowired//третий способ внедрения зависимости, в таком случае ни конструктор, ни метод, ничего не нужно
-    private Music music;
+    private final Music music1;
+    private final Music music2;
 
-    //IoC
-//    //@Autowired первый способ внедрения зависимости
-//    public MusicPlayer(Music music){
-//        this.music = music;
-//    }
-//
-//    //@Autowired второй способ внедрения зависимости - тут аннотация всё решает, всё-равно как называется метод
-//    public void setMusic(Music music){
-//        this.music = music;
-//    }
+    @Autowired
+    private MusicPlayer(@Qualifier("rockMusic") Music music1, @Qualifier("classicalMusic") Music music2){
+        this.music1 = music1;
+        this.music2 = music2;
+    }
 
-    public String play(){
-        return "Playnig: " + music.getSong();
+    public String play(Genre genre){
+
+        if (genre==Genre.ROCK) {
+            return "Playing: " + music1.getSong();
+        } else
+
+    return "Playing: " + music2.getSong();
+
+
+//        return "Playnig: " + music1.getSong() + ",\n " + music2.getSong();
     }
 }
